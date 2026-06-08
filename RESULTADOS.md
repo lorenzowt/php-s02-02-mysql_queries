@@ -2,11 +2,14 @@
 
 
 ## 📈 Resumen
-✅ 0 correctas de 2 queries
+✅ 1 correctas de 2 queries
 
-## ❌ Query 1: Error
-- **Descripción**: 1146 (42S02): Table 'tienda.productos' doesn't exist
+## ✅ Query 1: Correcto
 
+⏱ Tiempo: 0.39 ms
+🔍 No se usó ningún índice en esta consulta.
+
+---
 
 ## ❌ Query 2: Error
 - **Descripción**: 'NoneType' object is not iterable
