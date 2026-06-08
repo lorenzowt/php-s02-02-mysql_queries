@@ -129,7 +129,7 @@ ORDER BY f.nombre ASC;
 SELECT p.codigo,
        p.nombre,
        p.codigo_fabricante AS `codigo fabricante`,
-       f.nombre AS `nombre del fabricante`
+       f.nombre AS `nombre fabricante`
 FROM producto p
 JOIN fabricante f
 ON p.codigo_fabricante = f.codigo;
@@ -147,7 +147,7 @@ LIMIT 1;
 -- 25. Retorna el nom del producte, el preu i el nom del seu fabricant (fabricante), del producte més car.
 SELECT p.nombre,
        p.precio,
-       f.nombre AS `fabricante`
+       f.nombre AS fabricante
 FROM producto p
 JOIN fabricante f
 ON p.codigo_fabricante = f.codigo
@@ -156,7 +156,7 @@ LIMIT 1;
 
 -- 26. Retorna una llista amb nom i preu de tots els productes del fabricant Lenovo.
 SELECT p.nombre,
-       p.precio,
+       p.precio
 FROM producto p
 JOIN fabricante f
 ON p.codigo_fabricante = f.codigo
@@ -164,7 +164,7 @@ WHERE f.nombre = 'Lenovo';
 
 -- 27. Retorna una llista amb nom i preu de tots els productes del fabricant Crucial que tinguin un preu major que 200 €
 SELECT p.nombre,
-       p.precio,
+       p.precio
 FROM producto p
 JOIN fabricante f
 ON p.codigo_fabricante = f.codigo
