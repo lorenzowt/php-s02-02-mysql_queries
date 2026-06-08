@@ -317,4 +317,8 @@ WHERE precio > (
              SELECT codigo
              FROM fabricante
              WHERE nombre = 'ASUS')
-);
+       ) AND codigo_fabricante = (
+             SELECT codigo
+             FROM fabricante
+             WHERE nombre = 'ASUS'
+       );
