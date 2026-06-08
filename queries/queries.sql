@@ -189,7 +189,7 @@ ON p.codigo_fabricante = f.codigo
 WHERE EXISTS (
        SELECT 1
        FROM fabricante f2
-       WHERE f2.codigo = p.codigo_producto
+       WHERE f2.codigo = p.codigo_fabricante
         AND f2.nombre IN ('Asus', 'Hewlett-Packard', 'Seagate')
 );
 
@@ -218,8 +218,8 @@ SELECT p.nombre,
 FROM producto p
 JOIN fabricante f
 ON p.codigo_fabricante = f.codigo
-WHERE p.price >= 180
-ORDER BY p.price DESC, p.nombre ASC;
+WHERE p.precio >= 180
+ORDER BY p.precio DESC, p.nombre ASC;
 
 -- 33. Retorna un llistat amb el codi i el nom de fabricant (fabricante), solament d'aquells fabricants que tenen productes associats en la base de dades.
 SELECT DISTINCT f.codigo,
@@ -249,14 +249,10 @@ FROM producto
 WHERE codigo_fabricante = (
       SELECT codigo
       FROM fabricante
-      WHERE nombre = 'Lenovo')
-
+      WHERE nombre = 'Lenovo');
 
 -- 37. Retorna totes les dades dels productes que tenen el mateix preu que el producte més car del fabricant Lenovo. (Sense usar INNER JOIN).
-SELECT codigo,
-       nombre,
-       precio,
-       codigo_fabricante       
+SELECT nombre       
 FROM producto
 WHERE precio = (
       SELECT MAX(precio)
