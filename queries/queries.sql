@@ -73,7 +73,7 @@ ORDER BY nombre DESC;
 -- 15. Llista els noms i els preus dels productes ordenats, en primer lloc, pel nom de manera ascendent i, en segon lloc, pel preu de manera descendent.
 SELECT nombre,
        precio
-FROM fabricante
+FROM producto
 ORDER BY nombre ASC, precio DESC;
 
 -- 16. Retorna una llista amb les 5 primeres files de la taula fabricante.
@@ -108,7 +108,7 @@ FROM producto
 WHERE codigo_fabricante = 2;
 
 -- 21. Retorna una llista amb el nom del producte, preu i nom de fabricant (nombre del fabricante) de tots els productes de la base de dades.
-SELECT p.nombre AS producto,
+SELECT p.nombre AS nombre,
        p.precio AS precio,
        f.nombre AS `nombre del fabricante`
 FROM producto p
@@ -117,22 +117,58 @@ ON p.codigo_fabricante = f.codigo;
 
 
 -- 22. Llista tots els productes amb nom, preu i nom del fabricant (nombre del fabricante) ordenats alfabèticament.
-
+SELECT p.nombre AS nombre,
+       p.precio AS precio,
+       f.nombre AS `nombre del fabricante`
+FROM producto p
+JOIN fabricante f
+ON p.codigo_fabricante = f.codigo
+ORDER BY p.nombre ASC;
 
 -- 23. Retorna una llista amb el codi del producte, nom del producte, codi del fabricant (codigo fabricante) i nom del fabricant (nombre fabricante), de tots els productes de la base de dades.
-
+SELECT p.codigo AS codigo
+       p.nombre AS nombre,
+       p.codigo_fabricante AS `codigo fabricante`,
+       f.nombre AS `nombre del fabricante`
+FROM producto p
+JOIN fabricante f
+ON p.codigo_fabricante = f.codigo;
 
 -- 24. Retorna el nom, el preu i el nom del fabricant (fabricante), del producte més barat.
-
+SELECT p.nombre AS nombre,
+       p.precio AS precio,
+       f.nombre AS `fabricante`
+FROM producto p
+JOIN fabricante f
+ON p.codigo_fabricante = f.codigo
+ORDER BY p.precio ASC
+LIMIT 1;
 
 -- 25. Retorna el nom del producte, el preu i el nom del seu fabricant (fabricante), del producte més car.
-
+SELECT p.nombre AS nombre,
+       p.precio AS precio,
+       f.nombre AS `fabricante`
+FROM producto p
+JOIN fabricante f
+ON p.codigo_fabricante = f.codigo
+ORDER BY p.precio DESC
+LIMIT 1;
 
 -- 26. Retorna una llista amb nom i preu de tots els productes del fabricant Lenovo.
-
+SELECT p.nombre AS nombre,
+       p.precio AS precio,
+FROM producto p
+JOIN fabricante f
+ON p.codigo_fabricante = f.codigo
+WHERE f.nombre = 'Lenovo';
 
 -- 27. Retorna una llista amb nom i preu de tots els productes del fabricant Crucial que tinguin un preu major que 200 €
-
+SELECT p.nombre AS nombre,
+       p.precio AS precio,
+FROM producto p
+JOIN fabricante f
+ON p.codigo_fabricante = f.codigo
+WHERE f.nombre = 'Crucial', p.precio > 200;
 
 -- 28. Retorna un llistat amb nom, preu i nom del fabricant (fabricante) de tots els productes dels fabricants Asus, Hewlett-Packard i Seagate. Sense utilitzar l'operador IN.
 
